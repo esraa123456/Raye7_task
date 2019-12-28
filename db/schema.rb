@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_153621) do
+ActiveRecord::Schema.define(version: 2019_12_28_200743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_153621) do
     t.integer "destination_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "passenger_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_153621) do
     t.integer "destination_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "driver_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,12 +53,15 @@ ActiveRecord::Schema.define(version: 2019_12_28_153621) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "pickups", "places", column: "destination_id"
   add_foreign_key "pickups", "places", column: "source_id"
+  add_foreign_key "pickups", "users", column: "passenger_id"
   add_foreign_key "trips", "places", column: "destination_id"
   add_foreign_key "trips", "places", column: "source_id"
+  add_foreign_key "trips", "users", column: "driver_id"
 end
