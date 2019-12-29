@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Departure Time</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>No Of Seats</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +16,10 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td><%= link_to 'Show', trip %></td>
         <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
         <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>

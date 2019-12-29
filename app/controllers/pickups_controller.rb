@@ -69,6 +69,6 @@ class PickupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pickup_params
-      params.fetch(:pickup, {})
+      params.require(:place).permit(:departure_time, :source_id, :destination_id, :driver_id)
     end
 end
